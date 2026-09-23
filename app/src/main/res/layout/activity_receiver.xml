@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!-- 视频渲染区：使用TextureView支持精确缩放 -->
+    <TextureView
+        android:id="@+id/tv_display"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+    <!-- 顶部信息条 -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/layout_info_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#CC1C1B1F"
+        android:alpha="0.92">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/tv_sender_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="等待投屏…"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium" />
+
+            <TextView
+                android:id="@+id/tv_recv_resolution"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textColor="#B3FFFFFF"
+                android:textSize="11sp"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:id="@+id/tv_recv_bitrate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textColor="#B3FFFFFF"
+                android:textSize="11sp"
+                android:layout_marginEnd="12dp" />
+
+            <TextView
+                android:id="@+id/tv_recv_latency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textColor="@color/md_primary_container"
+                android:textSize="11sp"
+                android:fontFamily="sans-serif-medium" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- 底部控制条 -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/layout_control_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="#CC1C1B1F"
+        android:alpha="0.92">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_display_mode"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:text="等比缩放"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_stop_recv"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:text="结束"
+                android:textColor="@color/md_error_container"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

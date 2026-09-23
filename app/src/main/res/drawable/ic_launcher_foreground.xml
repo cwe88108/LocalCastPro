@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- 投屏图标：屏幕 + 信号 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M30,35 L78,35 L78,65 L30,65 Z"
+        android:strokeWidth="2"
+        android:strokeColor="#FFFFFF" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,45 L68,45 L68,55 L40,55 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,55 L58,55 L58,68 L50,68 Z" />
+    <path
+        android:pathData="M42,62 Q54,72 66,62"
+        android:strokeWidth="2"
+        android:strokeColor="#FFFFFF"
+        android:fillColor="#00000000" />
+    <path
+        android:pathData="M38,66 Q54,78 70,66"
+        android:strokeWidth="2"
+        android:strokeColor="#FFFFFF"
+        android:fillColor="#00000000" />
+</vector>

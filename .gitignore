@@ -1,0 +1,14 @@
+signing/
+*.jks
+*.keystore
+*.p12
+*.pfx
+**/release.properties
+.gradle/
+.idea/
+.qoder/
+build/
+app/build/
+local.properties
+*.apk
+/receiver-*.png

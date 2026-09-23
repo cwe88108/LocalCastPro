@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- 视频设置 -->
+    <PreferenceCategory
+        app:title="视频设置"
+        app:iconSpaceReserved="false">
+
+        <ListPreference
+            app:key="resolution"
+            app:title="分辨率"
+            app:summary="自动（推荐）"
+            app:defaultValue="auto"
+            app:entries="@array/resolution_entries"
+            app:entryValues="@array/resolution_values"
+            app:iconSpaceReserved="false" />
+
+        <ListPreference
+            app:key="frame_rate"
+            app:title="帧率"
+            app:summary="30 fps（稳定）"
+            app:defaultValue="30"
+            app:entries="@array/fps_entries"
+            app:entryValues="@array/fps_values"
+            app:iconSpaceReserved="false" />
+
+        <ListPreference
+            app:key="bitrate"
+            app:title="码率"
+            app:summary="自动（推荐）"
+            app:defaultValue="auto"
+            app:entries="@array/bitrate_entries"
+            app:entryValues="@array/bitrate_values"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <!-- 音频设置 -->
+    <PreferenceCategory
+        app:title="音频设置"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreferenceCompat
+            app:key="audio_enabled"
+            app:title="开启音频"
+            app:summary="投屏时同时传输音频"
+            app:defaultValue="true"
+            app:iconSpaceReserved="false" />
+
+        <ListPreference
+            app:key="audio_mode"
+            app:title="音频采集模式"
+            app:summary="系统音频（投送设备播放的声音）"
+            app:defaultValue="system"
+            app:entries="@array/audio_mode_entries"
+            app:entryValues="@array/audio_mode_values"
+            app:iconSpaceReserved="false" />
+
+        <ListPreference
+            app:key="audio_quality"
+            app:title="音频质量"
+            app:summary="中"
+            app:defaultValue="medium"
+            app:entries="@array/audio_quality_entries"
+            app:entryValues="@array/audio_quality_values"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <!-- 网络设置 -->
+    <PreferenceCategory
+        app:title="网络设置"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            app:key="tcp_port"
+            app:title="TCP握手端口"
+            app:summary="8889"
+            app:defaultValue="8889"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            app:key="udp_port"
+            app:title="UDP数据端口"
+            app:summary="8890"
+            app:defaultValue="8890"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+    <!-- 高级设置 -->
+    <PreferenceCategory
+        app:title="高级设置"
+        app:iconSpaceReserved="false">
+
+        <SwitchPreferenceCompat
+            app:key="force_hardware_codec"
+            app:title="强制硬件编解码"
+            app:summary="优先使用硬件编解码器（推荐开启）"
+            app:defaultValue="true"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            app:key="disable_b_frames"
+            app:title="禁用B帧"
+            app:summary="禁用B帧编码以降低延迟（推荐开启）"
+            app:defaultValue="true"
+            app:iconSpaceReserved="false" />
+
+        <EditTextPreference
+            app:key="i_frame_interval"
+            app:title="I帧间隔（秒）"
+            app:summary="1"
+            app:defaultValue="1"
+            app:iconSpaceReserved="false" />
+
+        <SwitchPreferenceCompat
+            app:key="touch_feedback"
+            app:title="触控回传"
+            app:summary="允许接收端控制发送端（实验性功能）"
+            app:defaultValue="false"
+            app:iconSpaceReserved="false" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

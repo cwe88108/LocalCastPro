@@ -1,0 +1,80 @@
+plugins {
+    id 'com.android.application'
+}
+
+def releaseSigningFile = rootProject.file('signing/release.properties')
+def releaseSigning = new Properties()
+if (releaseSigningFile.isFile()) {
+    releaseSigningFile.withInputStream { releaseSigning.load(it) }
+}
+
+android {
+    namespace 'com.localcast.pro'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.localcast.pro"
+        minSdk 24
+        targetSdk 34
+        versionCode 10
+        versionName "1.0.9"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
+    }
+
+    signingConfigs {
+        release {
+            if (releaseSigningFile.isFile()) {
+                storeFile rootProject.file('signing/localcast-release.jks')
+                storePassword releaseSigning.getProperty('storePassword')
+                keyAlias releaseSigning.getProperty('keyAlias')
+                keyPassword releaseSigning.getProperty('keyPassword')
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            if (releaseSigningFile.isFile()) {
+                signingConfig signingConfigs.release
+            }
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'androidx.preference:preference:1.2.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.8.6'
+    implementation 'androidx.lifecycle:lifecycle-service:2.8.6'
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+}

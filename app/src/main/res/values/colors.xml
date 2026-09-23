@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Material 3 Primary -->
+    <color name="md_primary">#6750A4</color>
+    <color name="md_on_primary">#FFFFFF</color>
+    <color name="md_primary_container">#EADDFF</color>
+    <color name="md_on_primary_container">#21005D</color>
+
+    <!-- Material 3 Secondary -->
+    <color name="md_secondary">#625B71</color>
+    <color name="md_on_secondary">#FFFFFF</color>
+    <color name="md_secondary_container">#E8DEF8</color>
+    <color name="md_on_secondary_container">#1D192B</color>
+
+    <!-- Material 3 Tertiary -->
+    <color name="md_tertiary">#7D5260</color>
+    <color name="md_on_tertiary">#FFFFFF</color>
+    <color name="md_tertiary_container">#FFD8E4</color>
+    <color name="md_on_tertiary_container">#31111D</color>
+
+    <!-- Material 3 Error -->
+    <color name="md_error">#B3261E</color>
+    <color name="md_on_error">#FFFFFF</color>
+    <color name="md_error_container">#F9DEDC</color>
+    <color name="md_on_error_container">#410E0B</color>
+
+    <!-- Material 3 Surface -->
+    <color name="md_surface">#FFFBFE</color>
+    <color name="md_on_surface">#1C1B1F</color>
+    <color name="md_surface_variant">#E7E0EC</color>
+    <color name="md_on_surface_variant">#49454F</color>
+    <color name="md_surface_container">#F3EDF7</color>
+    <color name="md_surface_container_high">#ECE6F0</color>
+    <color name="md_surface_container_low">#F7F2FA</color>
+    <color name="md_inverse_surface">#313033</color>
+    <color name="md_inverse_on_surface">#F4EFF4</color>
+    <color name="md_outline">#79747E</color>
+    <color name="md_outline_variant">#CAC4D0</color>
+
+    <!-- 背景 -->
+    <color name="md_background">#FFFBFE</color>
+    <color name="md_on_background">#1C1B1F</color>
+
+    <!-- 兼容旧引用 -->
+    <color name="primary">@color/md_primary</color>
+    <color name="primary_dark">#4F378B</color>
+    <color name="primary_light">#D0BCFF</color>
+    <color name="accent">#FF6B35</color>
+    <color name="accent_dark">#E55A2B</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="background">@color/md_background</color>
+    <color name="surface">@color/md_surface</color>
+    <color name="error">@color/md_error</color>
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FF9800</color>
+    <color name="text_primary">@color/md_on_surface</color>
+    <color name="text_secondary">@color/md_on_surface_variant</color>
+    <color name="divider">@color/md_outline_variant</color>
+    <color name="overlay_dark">#80000000</color>
+    <color name="overlay_light">#40FFFFFF</color>
+    <color name="status_connected">#4CAF50</color>
+    <color name="status_disconnected">#9E9E9E</color>
+    <color name="status_casting">#FF6B35</color>
+</resources>

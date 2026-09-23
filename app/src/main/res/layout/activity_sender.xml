@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/overlay_dark">
+
+    <!-- 投屏预览小窗 -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="280dp"
+        android:layout_height="180dp"
+        android:layout_gravity="center"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:strokeWidth="2dp"
+        app:strokeColor="@color/md_primary_container">
+
+        <SurfaceView
+            android:id="@+id/sv_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- 顶部信息栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/gradient_top">
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_cast"
+            android:layout_width="0dp"
+            android:layout_height="4dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="12dp"
+            android:indeterminate="true"
+            app:indicatorColor="@color/md_primary_container"
+            app:trackColor="#40FFFFFF"
+            app:trackThickness="4dp" />
+
+        <TextView
+            android:id="@+id/tv_receiver_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="投屏中"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-medium" />
+
+    </LinearLayout>
+
+    <!-- 底部控制栏 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center"
+        android:background="@drawable/gradient_bottom">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_pause"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="暂停"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fullscreen"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="全屏"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_stop"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="结束投屏"
+            android:textColor="@color/md_error_container"
+            android:textSize="14sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_switch"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="切换方向"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!-- 性能统计悬浮 -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/layout_stats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center_vertical"
+        android:layout_marginEnd="12dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="4dp"
+        app:cardBackgroundColor="#CC1C1B1F"
+        android:alpha="0.88">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_latency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0ms"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:fontFamily="sans-serif-medium" />
+
+            <TextView
+                android:id="@+id/tv_bitrate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 Mbps"
+                android:textColor="#B3FFFFFF"
+                android:textSize="11sp"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/tv_fps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 fps"
+                android:textColor="#B3FFFFFF"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

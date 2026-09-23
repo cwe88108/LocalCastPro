@@ -1,0 +1,36 @@
+// Gradle 全局初始化脚本 - 使用国内镜像加速下载
+// 使用方法: gradle -I init.gradle build
+
+allprojects {
+    repositories {
+        all { ArtifactRepository repo ->
+            if (repo instanceof MavenArtifactRepository) {
+                def url = repo.url.toString()
+                if (url.startsWith('https://repo1.maven.org/maven2') || url.startsWith('https://jcenter.bintray.com')) {
+                    remove repo
+                }
+            }
+        }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        google()
+        mavenCentral()
+    }
+}
+
+gradle.projectsLoaded {
+    rootProject.allprojects {
+        buildscript {
+            repositories {
+                maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+                maven { url 'https://maven.aliyun.com/repository/google' }
+                maven { url 'https://maven.aliyun.com/repository/public' }
+                google()
+                mavenCentral()
+                gradlePluginPortal()
+            }
+        }
+    }
+}

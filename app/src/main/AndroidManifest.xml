@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+    <!-- 音频录制权限（运行时请求） -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-feature android:name="android.hardware.microphone" android:required="false" />
+
+    <!-- 唤醒锁权限，防止投屏时休眠 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- 前台服务权限 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <!-- 发送广播通知 -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <uses-feature android:name="android.hardware.wifi" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <application
+        android:name=".LocalCastApplication"
+        android:allowBackup="true"
+        android:banner="@drawable/tv_banner"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.LocalCastPro"
+        tools:targetApi="34">
+
+        <!-- 主界面 -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 设备发现界面 -->
+        <activity
+            android:name=".ui.DeviceDiscoveryActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+
+        <!-- 发送端投屏界面 -->
+        <activity
+            android:name=".ui.SenderActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/Theme.LocalCastPro.Translucent" />
+
+        <!-- 接收端投屏界面 -->
+        <activity
+            android:name=".ui.ReceiverActivity"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:theme="@style/Theme.LocalCastPro.Fullscreen" />
+
+        <!-- 设置界面 -->
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:exported="false"
+            android:launchMode="singleTop" />
+
+        <!-- 投屏前台服务 -->
+        <service
+            android:name=".service.CastService"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection" />
+
+        <!-- 设备发现服务 -->
+        <service
+            android:name=".service.DiscoveryService"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

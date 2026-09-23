@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 分辨率选项 -->
+    <string-array name="resolution_entries">
+        <item>自动（推荐）</item>
+        <item>360p</item>
+        <item>720p</item>
+        <item>1080p</item>
+        <item>1440p</item>
+        <item>4K</item>
+    </string-array>
+    <string-array name="resolution_values">
+        <item>auto</item>
+        <item>360p</item>
+        <item>720p</item>
+        <item>1080p</item>
+        <item>1440p</item>
+        <item>4k</item>
+    </string-array>
+
+    <!-- 帧率选项 -->
+    <string-array name="fps_entries">
+        <item>30 fps</item>
+        <item>60 fps</item>
+        <item>120 fps（实验性）</item>
+    </string-array>
+    <string-array name="fps_values">
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+    </string-array>
+
+    <!-- 码率选项 -->
+    <string-array name="bitrate_entries">
+        <item>自动（推荐）</item>
+        <item>低</item>
+        <item>中</item>
+        <item>高</item>
+        <item>极高</item>
+    </string-array>
+    <string-array name="bitrate_values">
+        <item>auto</item>
+        <item>low</item>
+        <item>medium</item>
+        <item>high</item>
+        <item>extreme</item>
+    </string-array>
+
+    <!-- 音频质量选项 -->
+    <string-array name="audio_quality_entries">
+        <item>低（64kbps）</item>
+        <item>中（128kbps）</item>
+        <item>高（192kbps）</item>
+    </string-array>
+    <string-array name="audio_quality_values">
+        <item>low</item>
+        <item>medium</item>
+        <item>high</item>
+    </string-array>
+
+    <!-- 音频采集模式 -->
+    <string-array name="audio_mode_entries">
+        <item>麦克风（仅采集环境声音）</item>
+        <item>系统音频（投送设备播放的声音）</item>
+    </string-array>
+    
+    <string-array name="audio_mode_values">
+        <item>microphone</item>
+        <item>system</item>
+    </string-array>
+</resources>

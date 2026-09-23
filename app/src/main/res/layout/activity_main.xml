@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_background">
+
+    <!-- 顶部栏 -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/md_surface"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:backgroundTint="@color/md_surface"
+            app:title="投屏神器"
+            app:titleTextColor="@color/md_on_surface"
+            app:titleTextAppearance="@style/TextAppearance.Material3.TitleLarge">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:orientation="vertical"
+                android:layout_marginEnd="4dp"
+                android:gravity="end">
+
+                <TextView
+                    android:id="@+id/tv_local_ip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/md_on_surface_variant"
+                    android:textSize="12sp"
+                    android:text="0.0.0.0"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:id="@+id/tv_wifi_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/md_outline"
+                    android:textSize="10sp"
+                    android:text="" />
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <!-- 投屏状态条 -->
+        <LinearLayout
+            android:id="@+id/layout_mode_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="10dp"
+            android:gravity="center_vertical"
+            android:background="@color/md_surface_container_low"
+            android:visibility="gone">
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progress_indicator"
+                android:layout_width="0dp"
+                android:layout_height="4dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="12dp"
+                android:indeterminate="true"
+                app:indicatorColor="@color/md_primary"
+                app:trackColor="@color/md_surface_variant"
+                app:trackThickness="4dp" />
+
+            <TextView
+                android:id="@+id/tv_mode_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/md_primary"
+                android:textSize="13sp"
+                android:text="投屏中"
+                android:fontFamily="sans-serif-medium" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_stop_casting"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginStart="12dp"
+                android:text="停止"
+                android:textColor="@color/md_error"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <!-- 主内容区 -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ========== 模式选择卡片 ========== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="选择模式"
+                android:textColor="@color/md_on_surface"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="24dp">
+
+                <!-- 发送端卡片 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_sender"
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/md_outline_variant"
+                    app:cardCornerRadius="16dp"
+                    app:cardBackgroundColor="@color/md_surface_container_low">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/ic_send"
+                            android:contentDescription="发送"
+                            android:alpha="0.9" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="发送投屏"
+                            android:textColor="@color/md_on_surface"
+                            android:textSize="15sp"
+                            android:fontFamily="sans-serif-medium" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="手机投到电视"
+                            android:textColor="@color/md_on_surface_variant"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- 接收端卡片 -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_receiver"
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/md_outline_variant"
+                    app:cardCornerRadius="16dp"
+                    app:cardBackgroundColor="@color/md_primary_container">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/ic_receive"
+                            android:contentDescription="接收"
+                            android:alpha="0.9" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="接收投屏"
+                            android:textColor="@color/md_on_primary_container"
+                            android:textSize="15sp"
+                            android:fontFamily="sans-serif-medium" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="电视接收画面"
+                            android:textColor="@color/md_on_surface_variant"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <!-- ========== 设备列表标题 ========== -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="发现的设备"
+                    android:textColor="@color/md_on_surface"
+                    android:textSize="18sp"
+                    android:fontFamily="sans-serif-medium" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_manual_connect"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="手动添加"
+                    android:textSize="13sp"
+                    android:textColor="@color/md_primary" />
+
+            </LinearLayout>
+
+            <!-- 设备列表 -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_devices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:clipToPadding="false"
+                android:paddingBottom="16dp" />
+
+            <!-- 空状态 -->
+            <LinearLayout
+                android:id="@+id/layout_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="32dp"
+                android:paddingBottom="32dp"
+                android:visibility="gone">
+
+                <com.google.android.material.progressindicator.CircularProgressIndicator
+                    android:id="@+id/progress_search"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:indeterminate="true"
+                    app:indicatorColor="@color/md_primary"
+                    app:indicatorSize="40dp"
+                    app:trackThickness="4dp" />
+
+                <TextView
+                    android:id="@+id/tv_empty_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:text="正在搜索设备…"
+                    android:textColor="@color/md_on_surface_variant"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:fontFamily="sans-serif" />
+
+                <TextView
+                    android:id="@+id/tv_guide_tip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="确保两台设备连接同一WiFi"
+                    android:textColor="@color/md_outline"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- 底部设置按钮 -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fab_settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:text="设置"
+        app:icon="@drawable/ic_settings"
+        app:iconTint="@color/md_on_primary_container"
+        android:textColor="@color/md_on_primary_container"
+        app:backgroundTint="@color/md_primary_container" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
