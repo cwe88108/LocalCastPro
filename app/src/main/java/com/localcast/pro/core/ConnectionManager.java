@@ -34,6 +34,7 @@ public class ConnectionManager {
 
     private static final long HEARTBEAT_INTERVAL_MS = 2000;
     private static final long HEARTBEAT_TIMEOUT_MS = 20000;
+    private static final int MAX_HANDSHAKE_CHARS = 16 * 1024;
 
     public enum ConnectionState { DISCONNECTED, CONNECTING, CONNECTED, RECONNECTING }
 
@@ -134,7 +135,7 @@ public class ConnectionManager {
                     new InputStreamReader(client.getInputStream(), StandardCharsets.UTF_8));
             PrintWriter writer = new PrintWriter(client.getOutputStream(), true);
 
-            String requestJson = reader.readLine();
+            String requestJson = readLimitedLine(reader);
             if (requestJson == null) { client.close(); return; }
 
             JSONObject request = new JSONObject(requestJson);
@@ -252,7 +253,7 @@ public class ConnectionManager {
         request.put("requestedFps", requestedFps);
         writer.println(request.toString());
 
-        String responseJson = reader.readLine();
+        String responseJson = readLimitedLine(reader);
         if (responseJson == null) throw new IOException("No response");
 
         JSONObject response = new JSONObject(responseJson);
@@ -280,6 +281,21 @@ public class ConnectionManager {
         setState(ConnectionState.CONNECTED);
         notifyDeviceConnected();
         return true;
+    }
+
+    /** Reject oversized or unterminated peer handshakes before parsing JSON. */
+    static String readLimitedLine(BufferedReader reader) throws IOException {
+        StringBuilder line = new StringBuilder();
+        int next;
+        while ((next = reader.read()) != -1) {
+            if (next == '\n') return line.toString();
+            if (line.length() >= MAX_HANDSHAKE_CHARS) {
+                throw new IOException("Handshake too large");
+            }
+            if (next != '\r') line.append((char) next);
+        }
+        if (line.length() == 0) return null;
+        throw new IOException("Unterminated handshake");
     }
 
     /** 仅清理客户端会话，接收端 TCP Server 继续监听以便重连 */
